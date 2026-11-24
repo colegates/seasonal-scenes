@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+- Install steps for the Home Assistant Marketplace (HACS built in from 2026.11).
+- First release made after the HACS validation checks pass, as the HACS store requires.
+
 ## 1.0.0
 
 First public release.

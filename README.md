@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/hacs/integration"><img src="https://img.shields.io/badge/HACS-Custom-41BDF5.svg" alt="HACS Custom"></a>
+  <a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Custom-41BDF5.svg" alt="HACS Custom"></a>
   <a href="https://github.com/colegates/seasonal-scenes/releases"><img src="https://img.shields.io/github/v/release/colegates/seasonal-scenes" alt="Release"></a>
   <a href="https://github.com/colegates/seasonal-scenes/actions/workflows/validate.yml"><img src="https://github.com/colegates/seasonal-scenes/actions/workflows/validate.yml/badge.svg" alt="HACS validation"></a>
 </p>
@@ -50,15 +50,19 @@ date, so every screen in the house shows the same theme at the same moment.
 
 ## Install
 
-### HACS (recommended)
+### Marketplace or HACS (recommended)
+
+From Home Assistant 2026.11, HACS is built in as the **Marketplace**
+(**Settings → Marketplace**). On older versions, use HACS. The steps are the
+same in both:
 
 [![Open your Home Assistant instance and open this repository inside HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=colegates&repository=seasonal-scenes&category=plugin)
 
 Or by hand:
 
-1. In HACS, open the menu (top right) and choose **Custom repositories**.
+1. Open the Marketplace (or HACS), open the menu (top right) and choose **Custom repositories**.
 2. Add `https://github.com/colegates/seasonal-scenes` with type **Dashboard**.
-3. Find **Seasonal Scenes** in HACS, download it, and reload your browser.
+3. Find **Seasonal Scenes**, download it, and reload your browser.
 
 ### Manually
 
