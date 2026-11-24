@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Seasonal Scenes is now in the HACS default catalogue. The install steps lead with searching for it in the Marketplace or HACS, with the custom repository as a fallback, and the badge says "HACS Default".
+
 ## 1.0.2
 
 - When the theme changes (autumn to scuba, say), leaves still in the air fade out instead of landing and lying under the bubbles for the rest of the slot. The same goes for an act from the old theme that is still finishing.
