@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Custom-41BDF5.svg" alt="HACS Custom"></a>
+  <a href="https://hacs.xyz"><img src="https://img.shields.io/badge/HACS-Default-41BDF5.svg" alt="HACS Default"></a>
   <a href="https://github.com/colegates/seasonal-scenes/releases"><img src="https://img.shields.io/github/v/release/colegates/seasonal-scenes" alt="Release"></a>
   <a href="https://github.com/colegates/seasonal-scenes/actions/workflows/validate.yml"><img src="https://github.com/colegates/seasonal-scenes/actions/workflows/validate.yml/badge.svg" alt="HACS validation"></a>
 </p>
@@ -53,16 +53,21 @@ date, so every screen in the house shows the same theme at the same moment.
 ### Marketplace or HACS (recommended)
 
 From Home Assistant 2026.11, HACS is built in as the **Marketplace**
-(**Settings → Marketplace**). On older versions, use HACS. The steps are the
-same in both:
+(**Settings → Marketplace**). On older versions, use HACS. Seasonal Scenes is
+in the default catalogue, so there is nothing to add first:
+
+1. Open the Marketplace (or HACS) and search for **Seasonal Scenes**.
+2. Download it, and reload your browser.
+
+Or jump straight to it:
 
 [![Open your Home Assistant instance and open this repository inside HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=colegates&repository=seasonal-scenes&category=plugin)
 
-Or by hand:
-
-1. Open the Marketplace (or HACS), open the menu (top right) and choose **Custom repositories**.
-2. Add `https://github.com/colegates/seasonal-scenes` with type **Dashboard**.
-3. Find **Seasonal Scenes**, download it, and reload your browser.
+If it doesn't show up in the search (an older HACS that hasn't refreshed its
+list yet, say), add it as a custom repository instead: open the menu (top
+right), choose **Custom repositories**, add
+`https://github.com/colegates/seasonal-scenes` with type **Dashboard**, then
+search again.
 
 Questions and discussion: https://community.home-assistant.io/t/seasonal-scenes-little-animated-characters-that-live-along-the-bottom-of-your-dashboard/1036257
 
