@@ -1,0 +1,11 @@
+name: Scene idea
+description: Suggest a theme, a holiday or an act
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: Who walks on, what goes wrong, how it ends. Which season, holiday or hobby it belongs to.
+    validations:
+      required: true

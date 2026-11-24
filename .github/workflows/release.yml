@@ -1,0 +1,36 @@
+name: Release
+
+# Push a tag like v1.2.0 and this builds the card and publishes a GitHub
+# release with seasonal-scenes.js attached, which is what HACS installs.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check the tag matches package.json
+        run: |
+          v=$(node -p "require('./package.json').version")
+          if [ "v$v" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package.json version $v" >&2
+            exit 1
+          fi
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/seasonal-scenes.js
+          generate_release_notes: true
+          body_path: .github/release-notes.md

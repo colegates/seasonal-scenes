@@ -1,0 +1,22 @@
+{
+  "name": "seasonal-scenes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Whimsical animated scenes for Home Assistant dashboards that change with the season, the time of day, holidays and birthdays.",
+  "license": "GPL-3.0",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "watch": "node tools/build.mjs --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node tools/test.mjs",
+    "lint:acts": "node tools/lint.mjs",
+    "preview": "node tools/preview.mjs"
+  },
+  "devDependencies": {
+    "canvaskit-wasm": "^0.42.0",
+    "esbuild-wasm": "^0.28.2",
+    "linkedom": "^0.18.15",
+    "typescript": "^5.8.0"
+  }
+}
