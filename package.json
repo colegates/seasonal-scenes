@@ -1,6 +1,6 @@
 {
   "name": "seasonal-scenes",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Whimsical animated scenes for Home Assistant dashboards that change with the season, the time of day, holidays and birthdays.",
   "license": "GPL-3.0",

@@ -73,6 +73,9 @@ export class ParticleField {
   /** Tallest the pile may get, px. */
   maxPile = 12
   private pileColor: string = C.white
+  private ambientKind: ParticleKind | undefined
+  /** The previous weather's kind, which no longer joins the pile. */
+  private goneKind: ParticleKind | undefined
 
   resize(w: number, ground: number, u: number) {
     const n = Math.ceil(w / BUCKET) + 1
@@ -94,6 +97,20 @@ export class ParticleField {
   configure(ambient: AmbientDef | undefined) {
     const mode = ambient?.pile ?? 'items'
     const max = (ambient?.maxPile ?? 10) * this.u
+    const kind = ambient?.kind
+    if (kind !== this.ambientKind && this.ambientKind) {
+      // The weather has changed (autumn to scuba, say). Whatever of the old
+      // weather is still in the air fades out instead of landing on the new
+      // floor and lying there for the whole slot.
+      for (const p of this.list) {
+        if (p.kind !== this.ambientKind) continue
+        p.settle = false
+        p.life = Math.min(p.life, p.age + 1.2)
+      }
+    }
+    if (kind !== this.ambientKind) this.goneKind = this.ambientKind
+    if (this.goneKind === kind) this.goneKind = undefined
+    this.ambientKind = kind
     if (mode !== this.pileMode || !ambient?.settle) this.clearPile()
     this.pileMode = mode
     this.maxPile = max
@@ -131,6 +148,9 @@ export class ParticleField {
       ...d,
       ...p,
     }
+    // An act from the previous theme may still be finishing (a leaf blower as
+    // the scuba divers take over). Its leaves land and fade, not pile up.
+    if (full.settle && full.kind === this.goneKind) full.settle = false
     if (this.list.length < 700) this.list.push(full)
     return full
   }

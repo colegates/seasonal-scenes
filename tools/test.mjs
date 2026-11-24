@@ -30,6 +30,7 @@ const test = async (name, fn) => {
 fs.writeFileSync(path.join(tmp, 'pure.ts'), `
 export * from '${root}/src/scenes/calendar'
 export * from '${root}/src/programme'
+export { ParticleField } from '${root}/src/scenes/particles'
 `)
 const pureOut = path.join(tmp, 'pure.mjs')
 await esbuild.build({ entryPoints: [path.join(tmp, 'pure.ts')], bundle: true, format: 'esm', outfile: pureOut, platform: 'neutral', logLevel: 'error' })
@@ -67,6 +68,25 @@ await test('birthdays parse, including leap-day birthdays', () => {
   assert.deepEqual(c.birthdayNames, ['Ben'])
   assert.equal(P.serialiseBirthdays(b), 'Ada:03-14;Ben:02-29;Cleo:12-01')
 })
+await test('the old weather does not land on a new theme\'s floor', () => {
+  const f = new P.ParticleField()
+  f.resize(400, 200, 1)
+  const leaves = { kind: 'leaf', colors: ['#c2410c'], rate: 1, flurry: [10, 5], settle: true }
+  f.configure(leaves)
+  f.emit({ kind: 'leaf', x: 100, y: 150, vy: 40, settle: true })
+  f.configure({ kind: 'bubble', colors: ['#bae6fd'], rate: 1, flurry: [10, 5], settle: false, rising: true })
+  // A leaf from an act that is still finishing.
+  f.emit({ kind: 'leaf', x: 200, y: 190, vy: 40, settle: true })
+  for (let i = 0; i < 200; i++) f.update(0.05)
+  assert.equal(f.fullness(), 0)
+  assert.equal(f.list.filter((p) => p.kind === 'leaf').length, 0)
+  // Back to autumn: leaves pile up again.
+  f.configure(leaves)
+  f.emit({ kind: 'leaf', x: 100, y: 190, vy: 40, settle: true })
+  for (let i = 0; i < 40; i++) f.update(0.05)
+  assert.ok(f.fullness() > 0)
+})
+
 await test('hobbies filter the programme', () => {
   const all = P.programme().map((t) => t.id)
   const some = P.programme(['golf']).map((t) => t.id)

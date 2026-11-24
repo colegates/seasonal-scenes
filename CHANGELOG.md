@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+- When the theme changes (autumn to scuba, say), leaves still in the air fade out instead of landing and lying under the bubbles for the rest of the slot. The same goes for an act from the old theme that is still finishing.
+- Changing the preview theme in the card editor drops the old theme's act straight away.
+
 ## 1.0.1
 
 - Install steps for the Home Assistant Marketplace (HACS built in from 2026.11).

@@ -67,7 +67,15 @@ export class SceneEngine {
   }
 
   attach(canvas: HTMLCanvasElement, opts: EngineOptions) {
+    const prev = this.opts
     this.detach()
+    if (prev && (prev.previewTheme ?? null) !== (opts.previewTheme ?? null)) {
+      // The card was given a different theme to preview (the visual editor
+      // does this). Drop the old theme's act rather than let it carry on.
+      this.act = null
+      this.previewIndex = 0
+      this.slotKey = ''
+    }
     this.canvas = canvas
     this.ctx = canvas.getContext('2d')
     this.opts = opts
