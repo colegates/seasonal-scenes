@@ -64,6 +64,8 @@ Or by hand:
 2. Add `https://github.com/colegates/seasonal-scenes` with type **Dashboard**.
 3. Find **Seasonal Scenes**, download it, and reload your browser.
 
+Questions and discussion: https://community.home-assistant.io/t/seasonal-scenes-little-animated-characters-that-live-along-the-bottom-of-your-dashboard/1036257
+
 ### Manually
 
 1. Download `seasonal-scenes.js` from the [latest release](https://github.com/colegates/seasonal-scenes/releases/latest).
